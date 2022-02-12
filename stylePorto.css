@@ -55,3 +55,9 @@ button {
   width: 80%;
   text-align: center;
 }
+
+.errorTxt {
+  position: absolute;
+  left: 65%;
+  color: red;
+}

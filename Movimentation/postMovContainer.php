@@ -3,12 +3,15 @@ require("../config/conexao.php");
 
 
   $cd = $_POST['cd'];
-  $category = $_POST['category'];
-  $movimentation = $_POST['movimentation'];
-  $status = $_POST['status'];
   $dateInit = $_POST['dateInit'];
   $dateFin = $_POST['dateFin'];
   $client = $_POST['cliente'];
+  
+  if(isset($_POST['category']) && isset($_POST['movimentation']) && isset($_POST['status'])){
+    $category = $_POST['category'];
+    $movimentation = $_POST['movimentation'];
+    $status = $_POST['status'];
+  }
 
 
 $searchContainer = "SELECT cd_container, cd_tipo FROM container WHERE cd_container = '$cd'";

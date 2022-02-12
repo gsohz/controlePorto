@@ -94,7 +94,7 @@
       <td><input id="cliente" class="inputText" name="cliente" type="text" onkeyup="loadClients(this.value)" onfocus="fecharClient()"/><span id="resultado_pesquisaClient"></span></td>
     </tr>
   </table>
-  <input class="btEnviar" type="submit" value="Atualizar">
+  <input class="btEnviar" type="submit" value="Registrar">
   </form>
   
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
