@@ -1,15 +1,7 @@
-table {
-  margin-left: auto;
-  margin-right: auto;
-  border-collapse: separate;
-  border-spacing: 0 2em;
-}
-select {
-  width: 12.8em;
-}
-
-h1 {
-  text-align: center;
+/* all pages */
+html,
+body {
+  margin: 0;
 }
 
 button {
@@ -17,7 +9,101 @@ button {
   margin: 1em;
   margin-left: auto;
   margin-right: auto;
+  width: 100%;
 }
+
+a:link {
+  text-decoration: none;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: separate;
+  border-spacing: 0 2em;
+}
+
+td {
+  text-align: end;
+}
+
+.unique {
+  position: relative;
+  left: 15%;
+}
+
+select {
+  width: 12.8em;
+}
+
+h1 {
+  text-align: center;
+}
+/* end all pages */
+
+/* index panel */
+.containerPage {
+  margin: 0;
+  padding: 0;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    180deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  height: 100vh;
+  width: 100vw;
+}
+
+.panel {
+  position: absolute;
+  top: 5%;
+  left: 35%;
+  width: 30%;
+  background-color: aliceblue;
+  border-radius: 10%;
+  padding: 27px 50px;
+  z-index: 9999;
+}
+
+.panel > h2 {
+  text-align: center;
+}
+/* end index panel */
+
+.panel.mov {
+  width: 60%;
+  left: 20%;
+}
+
+.panel.hist {
+  position: static;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  border-radius: 100%;
+}
+
+/* clock index */
+#time {
+  position: absolute;
+  top: 7%;
+  left: 4%;
+  background-color: rgba(15, 57, 97, 0.842);
+  border-radius: 100%;
+  padding: 30px;
+  font-size: 70px;
+  border: solid 15px rgba(255, 255, 255, 0.178);
+  color: white;
+}
+
+#time > p {
+  color: rgba(255, 255, 255, 0);
+  padding: 0;
+  margin: 0;
+}
+/* end clock index */
 
 .inputText {
   width: 100%;
@@ -28,9 +114,10 @@ button {
   border-radius: 4px;
   box-sizing: border-box;
 }
+/* end clock index */
 
 .btEnviar {
-  width: 20%;
+  width: 50%;
   background-color: #4caf50;
   color: white;
   padding: 14px 20px;
@@ -41,6 +128,7 @@ button {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 20px;
 }
 
 .container {
@@ -61,3 +149,101 @@ button {
   left: 65%;
   color: red;
 }
+
+/*
+.form.ctn {
+  position: absolute;
+  background-color: aliceblue;
+  left: 35%;
+  top: 5%;
+  padding: 50px;
+  width: 30%;
+  border-radius: 20%;
+}
+.form.client {
+  position: absolute;
+  background-color: aliceblue;
+  left: 35%;
+  top: 5%;
+  padding: 50px;
+  width: 30%;
+  border-radius: 20%;
+}
+
+.form.mov {
+  background-color: aliceblue;
+
+  padding: 50px;
+  width: 40%;
+  border-radius: 10%;
+  margin-bottom: 100px;
+}
+
+/* index wave animation */
+section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+section .wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background-image: url('./public/wave.png');
+  background-size: 1000px 100px;
+}
+
+section .wave.wave1 {
+  animation: waveAnimate1 30s linear infinite;
+  z-index: 998;
+  opacity: 1;
+  animation-delay: 0s;
+  bottom: 0;
+}
+
+section .wave.wave2 {
+  animation: waveAnimate2 15s linear infinite;
+  z-index: 997;
+  opacity: 0.5;
+  animation-delay: -5s;
+  bottom: 10px;
+}
+
+section .wave.wave3 {
+  animation: waveAnimate1 5s linear infinite;
+  z-index: 996;
+  opacity: 0.2;
+  animation-delay: -2s;
+  bottom: 15px;
+}
+
+section .wave.wave4 {
+  animation: waveAnimate2 5s linear infinite;
+  z-index: 995;
+  opacity: 0.7;
+  animation-delay: -5s;
+  bottom: 20px;
+}
+
+@keyframes waveAnimate1 {
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: 1000px;
+  }
+}
+
+@keyframes waveAnimate2 {
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: -1000px;
+  }
+}
+/* end index wave animation */

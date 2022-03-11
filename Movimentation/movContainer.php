@@ -12,7 +12,6 @@
     
     </head>
 
-
 <body>
 
 <?php
@@ -29,76 +28,75 @@
   ?>
     <a href="../index.php" style="position: absolute; left: 1%; top: 2%"><button class="btn btn-dark">Voltar</button></a>
   
-  <h1>Registrar Movimentação de Container</h1>
+  <div class="containerPage">
 
-  <form action="postMovContainer.php" method="POST">
-  <table>
-    <tr>
-      <td>Número do Container:</td>
-      <td><input class="inputText" type="text" name="cd" id="cd" onkeyup="loadContainers(this.value)"  onfocus="fecharContainer()"/><span id="resultado_pesquisaContainer"></span></td>
+    <div class="panel mov">
       
-    </tr>
-    
-    <tr>
-      <td>Tipo:</td>
-      <td><input class="inputText" disabled name="type" id="type" /></td>
-    </tr>
-    
-    <tr>
-      <td>Categoria:</td>
-      <td><select class="inputText" name="category" id="category"><option id="status" selected disabled hidden></option>
-        <?php
-            while($rowCategory = $resultCategory->fetch(PDO::FETCH_ASSOC)){
-              echo utf8_encode("<option value=".$rowCategory["cd_categoria"].">".$rowCategory["nm_categoria"]);
-            }
-            ?></select></td></td>
-      </select>
-    </tr>
-    
-    <tr>
-      <td>Status:</td>
-      <td><select class="inputText" name='status'>
-      <option id="status" selected disabled hidden></option>
-        <?php
-            while($rowStatus = $resultStatus->fetch(PDO::FETCH_ASSOC)){
-              echo utf8_encode("<option value=".$rowStatus["cd_status"].">".$rowStatus["nm_status"]);
-            }
-            ?></select></td>
-    </tr>
-    
-    <tr>
-      <td>Movimentação:</td>
-      <td><select class="inputText" name="movimentation">
-      <option selected disabled hidden></option>
-      <?php
-              while ($rowMov = $resultMovi->fetch(PDO::FETCH_ASSOC)){
-                echo utf8_encode("<option value=".$rowMov["cd_movimentacao_tipo"].">".$rowMov["nm_movimentacao_tipo"]);
-              }
+      <h1>Registrar Movimentação de Container</h1>
+      
+      <form action="postMovContainer.php" method="POST">
+          <table>
+            <tr class="unique">
+              <td>Número do Container:</td>
+              <td><input class="inputText" type="text" name="cd" id="cd" onkeyup="loadContainers(this.value)"  onfocus="fecharContainer()"/><span id="resultado_pesquisaContainer"></span></td>
+            </tr>
+            
+            <tr>
+              <td>Tipo:</td>
+              <td><input class="inputText" disabled name="type" id="type" /></td>
+            
+              <td>Categoria:</td>
+              <td><select class="inputText" name="category" id="category"><option id="status" selected disabled hidden></option>
+              <?php
+                while($rowCategory = $resultCategory->fetch(PDO::FETCH_ASSOC)){
+                  echo utf8_encode("<option value=".$rowCategory["cd_categoria"].">".$rowCategory["nm_categoria"]);
+                }
+                ?></select></td></td>
+              </select>
+            </tr>
+        
+        <tr>
+          <td>Status:</td>
+          <td><select class="inputText" name='status'>
+            <option id="status" selected disabled hidden></option>
+            <?php
+                while($rowStatus = $resultStatus->fetch(PDO::FETCH_ASSOC)){
+                  echo utf8_encode("<option value=".$rowStatus["cd_status"].">".$rowStatus["nm_status"]);
+                }
+                ?></select></td>
 
-            ?>
-      </select></td>
-    </tr>
+          <td>Movimentação:</td>
+          <td><select class="inputText" name="movimentation">
+            <option selected disabled hidden></option>
+            <?php
+                  while ($rowMov = $resultMovi->fetch(PDO::FETCH_ASSOC)){
+                    echo utf8_encode("<option value=".$rowMov["cd_movimentacao_tipo"].">".$rowMov["nm_movimentacao_tipo"]);
+                  }
+                  
+                  ?>
+          </select></td>
+        </tr>
 
-    <tr>
-      <td>Data Inicial:</td>
-      <td><input class="inputText" name="dateInit" type="datetime-local" id="dateInit" /></td>
-    </tr> 
+        <tr>
+          <td>Data Inicial:</td>
+          <td><input class="inputText" name="dateInit" type="datetime-local" id="dateInit" /></td>
 
-    <tr>
-      <td>Data Final:</td>
-      <td><input class="inputText" name="dateFin" type="datetime-local" id="dateFin" /></td>
-    </tr> 
-    
-    <tr>
-      <td>Cliente:</td>
-      <td><input id="cliente" class="inputText" name="cliente" type="text" onkeyup="loadClients(this.value)" onfocus="fecharClient()"/><span id="resultado_pesquisaClient"></span></td>
-    </tr>
-  </table>
-  <input class="btEnviar" type="submit" value="Registrar">
-  </form>
-  
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="../config/custom.js"></script>
-  
+          <td>Data Final:</td>
+          <td><input class="inputText" name="dateFin" type="datetime-local" id="dateFin" /></td>
+        </tr> 
+        
+        <tr class="unique">
+          <td>Cliente:</td>
+          <td><input id="cliente" class="inputText" name="cliente" type="text" onkeyup="loadClients(this.value)" onfocus="fecharClient()"/><span id="resultado_pesquisaClient"></span></td>
+        </tr>
+      </table>
+      <input class="btEnviar" type="submit" value="Registrar">
+    </form>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../config/custom.js"></script>
+
 </body>
 </html>

@@ -29,25 +29,25 @@
   ?>
   
   <a href="../index.php" style="position: absolute; left: 1%; top: 2%"><button class="btn btn-dark">Voltar</button></a>
-  <a href="pageReport.php"  style="position: absolute; top: 25%; left: 10%"><button class="btn btn-info">Relatórios do Dia</button></a>
-  
+  <a href="pageReport.php"  style="position: absolute; top: 35%; left: 10%"><button class="btn btn-info">Relatórios do Dia</button></a>
+  <div class="panel hist">
   <h1>Relatório</h1>
-
-  <div class="container align-items-center justify-content-center mt-4" id="movBar">
-    <form id="searchForm" name="searchForm" method="POST">
-  <div class="input-group">
-  <label class="mt-1 mx-2" for="dtIni">Entre: </label>   
-  <input class="form-control" id="dtIni" name="dtIni" type="datetime-local"></input>
-  <label class="input-group-addon mt-1 mx-2" for="dtFin">e: </label> 
-  <input class="form-control" id="dtFin" name="dtFin" type="datetime-local"></input>
-</div>
-<div class="input-group">
-  <label class="mt-3 mx-2" for="cd">Cliente: </label>   
-  <input id="cd" class="form-control m-auto" name="cd" type="text" onkeyup="loadHist(this.value)" onfocus="fecharContainer()" /></input>
-  <input class="btEnviar mx-2" name="submit" type="submit" value="Enviar">
-</div>
-<span id="resultado_pesquisaContainer"></span>
-</form>
+    <div class="container align-items-center justify-content-center mt-4" id="movBar">
+      <form id="searchForm" name="searchForm" method="POST">
+        <div class="input-group">
+          <label class="mt-1 mx-2" for="dtIni">Entre: </label>   
+          <input class="form-control" id="dtIni" name="dtIni" type="datetime-local"></input>
+          <label class="input-group-addon mt-1 mx-2" for="dtFin">e: </label> 
+          <input class="form-control" id="dtFin" name="dtFin" type="datetime-local"></input>
+        </div>
+        <div class="input-group">
+          <label class="mt-3 mx-2" for="cd">Cliente: </label>   
+          <input id="cd" class="form-control m-auto" name="cd" type="text" onkeyup="loadHist(this.value)" onfocus="fecharContainer()" /></input>
+          <input class="btEnviar mx-2" name="submit" type="submit" value="Enviar">
+        </div>
+        <span id="resultado_pesquisaContainer"></span>
+      </form>
+    </div>
   </div>
   <span class="errorTxt"></span>
 <br>
@@ -91,7 +91,7 @@ if(!isset($_POST['submit'])){
   ?>
 
 </h3>
-  <table class="table table-bordered table-striped mt-3" id="histMov">
+  <table class="table table-dark table-striped mt-3" id="histMov">
   <tr> 
     <th scope="col">#</th>
     <th scope="col">Cliente</th>

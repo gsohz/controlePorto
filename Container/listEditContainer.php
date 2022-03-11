@@ -34,7 +34,7 @@
 
   <table>
 
-  <table class="table table-bordered table-striped mt-5" id="histMov">
+  <table class="table table-dark table-striped mt-5" id="histMov">
   <tr> 
     <th scope="col">#</th>
     <th scope="col">Código Container</th>

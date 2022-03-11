@@ -32,30 +32,35 @@
 
   
   ?>
-  <a href="../index.php" style="position: absolute; left: 1%; top: 2%"><button class="btn btn-dark">Voltar</button></a>
-  <a href="movHist.php"  style="position: absolute; top: 25%; left: 10%"><button class="btn btn-info">Movimentações do Dia</button></a>
-  
-  <h1>Histórico de Movimentação</h1>
 
-  <div class="container align-items-center justify-content-center mt-4" id="movBar">
-    <form id="searchForm" method="POST">
-        <div class="input-group">
-          <label class="mt-1 mx-2" for="dtIni">Entre: </label>   
-          <input class="form-control mx-auto" id="dtIni" name="dtIni" type="datetime-local"></input>
-          <label class="input-group-addon mt-1 mx-2" for="dtFin">e: </label> 
-          <input class="form-control" id="dtFin" name="dtFin" type="datetime-local"></input>
-        </div>
-        <div class="input-group">
-          <label class="mt-3 mx-2" for="searchMov">Container: </label>   
-          <input id="cd" class="form-control m-auto" name="cd" type="text"onkeyup="loadContainers(this.value)" onfocus="fecharContainer()" pattern="[a-zA-Z]{4}[0-9]{7}" title="Insira o código do container. Ex.: TEST1234567" /></input>
-          <input class="btEnviar mx-2" name="submit" type="submit" value="Enviar">
-        </div>
-          <span id="resultado_pesquisaContainer"></span>
-</form>
+  <a href="../index.php" style="position: absolute; left: 1%; top: 2%"><button class="btn btn-dark">Voltar</button></a>
+  <a href="movHist.php"  style="position: absolute; top: 35%; left: 10%"><button class="btn btn-info">Movimentações do Dia</button></a>
+
+  <div class="panel hist">
+    <h1>Histórico de Movimentação</h1>
+    <div class="container align-items-center justify-content-center mt-4" id="movBar">
+      <form id="searchForm" method="POST">
+          <div class="input-group">
+            <label class="mt-1 mx-2" for="dtIni">Entre: </label>   
+            <input class="form-control mx-auto" id="dtIni" name="dtIni" type="datetime-local"></input>
+            <label class="input-group-addon mt-1 mx-2" for="dtFin">e: </label> 
+            <input class="form-control" id="dtFin" name="dtFin" type="datetime-local"></input>
+          </div>
+          <div class="input-group">
+            <label class="mt-3 mx-2" for="searchMov">Container: </label>   
+            <input id="cd" class="form-control m-auto" name="cd" type="text"onkeyup="loadContainers(this.value)" onfocus="fecharContainer()" pattern="[a-zA-Z]{4}[0-9]{7}" title="Insira o código do container. Ex.: TEST1234567" /></input>
+            <input class="btEnviar mx-2" name="submit" type="submit" value="Enviar">
+          </div>
+            <span id="resultado_pesquisaContainer"></span>
+      </form>
+    </div>
   </div>
-  <span class="errorTxt"></span>
-<br>
-<h3 class="mt-4" style="text-align: center"><?php 
+
+  <div class="histTable">
+
+    <span class="errorTxt"></span>
+    <br>
+    <h3 class="mt-4" style="text-align: center"><?php 
   if(!isset($_POST['submit'])){
     echo "Movimentações do Dia";
   } else{
@@ -67,10 +72,10 @@
 
   if(isset($cd) && $dtIni == null) {
     if($cd != null){
-    echo "Movimentações do container ".$cd;
+      echo "Movimentações do container ".$cd;
     }
   }
-
+  
   
   if(isset($dtIni) && isset($dtFin)) {
     $dtIniGet = date_create($dtIni);
@@ -84,25 +89,25 @@
       echo "Movimentações do container: " .$cd ." entre ".$dtIniFormat." e ".$dtFinFormat;
     }
   }
+  
+  ?></h3>
+  <table class="table table-dark table-striped mt-3" id="histMov">
+    <tr> 
+      <th scope="col">#</th>
+      <th scope="col">Código Container</th>
+      <th scope="col">Início Movimentação</th>
+      <th scope="col">Fim Movimentação</th>
+      <th scope="col">Tipo</th>
+      <th scope="col">Categoria</th>
+      <th scope="col">Cliente</th>
+    </tr>
+    <?php
 
-?></h3>
-  <table class="table table-bordered table-striped mt-3" id="histMov">
-  <tr> 
-    <th scope="col">#</th>
-    <th scope="col">Código Container</th>
-    <th scope="col">Início Movimentação</th>
-    <th scope="col">Fim Movimentação</th>
-    <th scope="col">Tipo</th>
-    <th scope="col">Categoria</th>
-    <th scope="col">Cliente</th>
-  </tr>
-  <?php
 
-
-  if(!isset($_POST['submit'])){
-    while($rowHist = $resultHist->fetch(PDO::FETCH_ASSOC)){
-      echo "<tr><td id='options'><a href='consulta.php?cd=".$rowHist['cd_container'] ."&dtIni=" .$rowHist['dt_inicio_movimentacao'] ."'>^</a> <a href='delete.php?cd=".$rowHist['cd_container'] ."&dtIni=" .$rowHist['dt_inicio_movimentacao'] ."'>X</a></td>"
-      ."<td id='cd'>".$rowHist['cd_container']."</td>"
+if(!isset($_POST['submit'])){
+  while($rowHist = $resultHist->fetch(PDO::FETCH_ASSOC)){
+    echo "<tr><td id='options'><a href='consulta.php?cd=".$rowHist['cd_container'] ."&dtIni=" .$rowHist['dt_inicio_movimentacao'] ."'>^</a> <a href='delete.php?cd=".$rowHist['cd_container'] ."&dtIni=" .$rowHist['dt_inicio_movimentacao'] ."'>X</a></td>"
+    ."<td id='cd'>".$rowHist['cd_container']."</td>"
       ."<td id='dtInit'>".$rowHist['dt_inicio_movimentacao']."</td>"
       ."<td id='dtFin'>".$rowHist['dt_fim_movimentacao']."</td>"
       ."<td id='mov_type'>".$rowHist['nm_movimentacao_tipo']."</td>"
@@ -133,7 +138,7 @@
     WHERE dt_inicio_movimentacao BETWEEN '$dtIni' AND '$dtFin' ORDER BY dt_inicio_movimentacao DESC";
     
     $resultDt = $conn->query($searchDt);
-
+    
     $resultCdDt = "SELECT cd_container, nm_movimentacao_tipo, nm_cliente, dt_inicio_movimentacao, dt_fim_movimentacao, nm_categoria
     FROM movimentacao_container
     INNER JOIN movimentacao_tipo ON movimentacao_container.cd_movimentacao_tipo = movimentacao_tipo.cd_movimentacao_tipo
@@ -141,8 +146,8 @@
     INNER JOIN cliente ON movimentacao_container.cd_cliente = cliente.cd_cliente
     WHERE cd_container LIKE '$cd' AND dt_inicio_movimentacao BETWEEN '$dtIni' AND '$dtFin' ORDER BY dt_inicio_movimentacao DESC";
 
-    $resultCdDt = $conn->query($resultCdDt);
-  
+$resultCdDt = $conn->query($resultCdDt);
+
     if($resultCd->rowCount() >= 1 && $_POST['dtIni'] == null){
     while($resultCd && $rowCd = $resultCd->fetch(PDO::FETCH_ASSOC)){
       echo "<tr><td id='options'><a href='consulta.php?cd=".$rowCd['cd_container'] ."&dtIni=" .$rowCd['dt_inicio_movimentacao'] ."'>^</a> <a href='delete.php?cd=".$rowCd['cd_container'] ."&dtIni=" .$rowCd['dt_inicio_movimentacao'] ."'>X</a></td>"
@@ -165,7 +170,7 @@
     ."<td id='category'>".utf8_encode($rowDt['nm_categoria'])."</td>"
     ."<td id='client'>".$rowDt['nm_cliente']."</td>"
     ."</tr>";
-}
+  }
 } else if($resultCdDt->rowCount() >= 1){
   while($resultCdDt && $rowCdDt = $resultCdDt->fetch(PDO::FETCH_ASSOC)){
     echo "<tr><td id='options'><a href='consulta.php?cd=".$rowCdDt['cd_container'] ."&dtIni=" .$rowCdDt['dt_inicio_movimentacao'] ."'>^</a> <a href='delete.php?cd=".$rowCdDt['cd_container'] ."&dtIni=" .$rowCdDt['dt_inicio_movimentacao'] ."'>X</a></td>"
@@ -176,9 +181,9 @@
     ."<td id='category'>".utf8_encode($rowCdDt['nm_categoria'])."</td>"
     ."<td id='client'>".$rowCdDt['nm_cliente']."</td>"
     ."</tr>";
+  }
 }
-}
-  ?>
+?>
 </table>
 
 
@@ -195,13 +200,14 @@ if($resultHist->rowCount() == 0 && !isset($_POST['submit'])){
 }
 
 ?>
+</div>
 
 
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="../config/validator.js"></script>
-  <script type="text/javascript" src="../config/custom.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../config/validator.js"></script>
+<script type="text/javascript" src="../config/custom.js"></script>
 </body>
 </html>

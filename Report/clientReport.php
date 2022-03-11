@@ -15,7 +15,7 @@
 
 
 <body>
-
+<div class="containerPage">
 <a href="pageReport.php" style="position: absolute; left: 1%; top: 2%"><button class="btn btn-dark">Voltar</button></a>
 
 <?php
@@ -39,19 +39,19 @@
 
   <div class="container align-items-center justify-content-center mt-4" id="movBar">
     <form action="../config/autocompleteHist.php" method="POST">
-  <div class="input-group">
-  <label class="mt-1 mx-2" for="searchMovDtIni">Entre: </label>   
-  <input class="form-control" name="searchMovDtIni" type="datetime-local"></input>
-  <label class="input-group-addon mt-1 mx-2" for="searchMovDtFin">e: </label> 
-  <input class="form-control" name="searchMovDtFin" type="datetime-local"></input>
-</div>
-<div class="input-group">
-  <label class="mt-3 mx-2" for="searchMov">Cliente: </label>   
-  <input id="searchMovCont" class="form-control m-auto" name="searchMovCont" type="text"onkeyup="loadHist(this.value)" onfocus="fecharContainer()" /></input>
-  <input class="btEnviar mx-2" type="submit" value="Enviar">
-</div>
-<span id="resultado_pesquisaContainer"></span>
-</form>
+      <div class="input-group">
+        <label class="mt-1 mx-2" for="searchMovDtIni">Entre: </label>   
+        <input class="form-control" name="searchMovDtIni" type="datetime-local"></input>
+        <label class="input-group-addon mt-1 mx-2" for="searchMovDtFin">e: </label> 
+        <input class="form-control" name="searchMovDtFin" type="datetime-local"></input>
+      </div>
+      <div class="input-group">
+        <label class="mt-3 mx-2" for="searchMov">Cliente: </label>   
+        <input id="searchMovCont" class="form-control m-auto" name="searchMovCont" type="text"onkeyup="loadHist(this.value)" onfocus="fecharContainer()" /></input>
+        <input class="btEnviar mx-2" type="submit" value="Enviar">
+      </div>
+      <span id="resultado_pesquisaContainer"></span>
+    </form>
   </div>
 
 <h3 class="mt-4"style="text-align: center">Relatório do Dia</h3>
@@ -86,6 +86,7 @@ if($resultRep->rowCount() == 0){
 }
 
 ?>
+</div>
   
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   <script type="text/javascript" src="../config/custom.js"></script>
